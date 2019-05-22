@@ -8,10 +8,12 @@ This calculator includes calculation on,
 - character stats (rb)
 - pet stats (rb)
 - pet saddles
-- brooches
+- pet brooches
+- pills for saddle and brooch
+- equipments
 - potential pills
 - stats pills 
-- hotsprings
+- hotsprings  
 *(Note that the accuracy is +-2 stats points)*  
     
    
