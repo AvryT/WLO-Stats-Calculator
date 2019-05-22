@@ -1,0 +1,335 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
+  <meta name="description" content="WLO Stats Calculator 飘流幻境 能力素質計算">
+  <meta name="keywords" content="NWLO, Old WLO, WLO, WLO Mobile, Stats Calculator, HP/SP Calculator, WLO Guides, Damage Calculator, 飘流幻境 能力素質計算">
+  <meta name="author" content="FriedChicken#7656">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="css/myStyle.css"> 
+  <script src="js/myScript.js"></script>
+
+<table border="1" cellpadding="5px" style="font-family: lato, sans-serif; font-size: 20px;" nowrap>
+<tr>
+  <td colspan="5" style="font-size: 15px;">Character/Pet 人物/寵物 &nbsp;&nbsp;&nbsp;
+    <select id="charDDL" onchange="charType()">
+      <option value="Character" selected="selected">Character 人物</option>
+      <option value="Pet">Pet 寵物</option> 
+    </select>
+  </td>
+  <td rowspan="5"></td>
+  <td colspan="9" style="font-size: 15px;">Equipments 裝備</td>
+</tr>
+<tr>
+<td colspan="2" nowrap>Element: 
+<select id="elementDDL" onchange="calculate()">
+    <option value="Earth" selected="selected">Earth 地</option>
+    <option value="Fire">Fire 火</option>
+    <option value="Water">Water 水</option>
+    <option value="Wind">Wind 風</option>
+  </select>
+  </td>
+<td rowspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td colspan="2">Potential 潛能丸: 
+<select id="potentialDDL" onchange="calculate()">
+    <option value="0" selected="selected">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option> 
+    <option value="4">4</option> 
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option> 
+    <option value="8">8</option>
+    <option value="9">9</option> 
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+  </select> 
+  </td>  
+  <td rowspan="4"style="vertical-align: top;">Head<br><button type="button" onclick="resetEquip('Head')">Reset</button></td>
+  <td rowspan="4">ATK: <br>
+    DEF: <br>
+    MAT: <br>
+    MDF: <br>
+    SPD: <br>
+    HP: <br>
+    SP: <br>
+  </td>
+  <td rowspan="4">
+    <input type="number" id="atkHead" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="defHead" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="matHead" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="mdfHead" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="spdHead" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="hpHead" value="0" min="0" max="2000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="spHead" value="0" min="0" max="2000" onkeyup="calculate()" onchange="calculate()"/><br>
+  </td>
+  <td rowspan="4"style="vertical-align: top;">Arm<br><button type="button" onclick="resetEquip('Arm')">Reset</button></td>
+  <td rowspan="4">ATK: <br>
+    DEF: <br>
+    MAT: <br>
+    MDF: <br>
+    SPD: <br>
+    HP: <br>
+    SP: <br>
+  </td>
+  <td rowspan="4">
+    <input type="number" id="atkArm" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="defArm" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="matArm" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="mdfArm" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="spdArm" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="hpArm" value="0" min="0" max="2000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="spArm" value="0" min="0" max="2000" onkeyup="calculate()" onchange="calculate()"/><br>
+  </td>
+  <td rowspan="4"style="vertical-align: top;">Body<br><button type="button" onclick="resetEquip('Body')">Reset</button></td>
+  <td rowspan="4">ATK: <br>
+    DEF: <br>
+    MAT: <br>
+    MDF: <br>
+    SPD: <br>
+    HP: <br>
+    SP: <br>
+  </td>
+  <td rowspan="4">
+    <input type="number" id="atkBody" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="defBody" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="matBody" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="mdfBody" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="spdBody" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="hpBody" value="0" min="0" max="2000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="spBody" value="0" min="0" max="2000" onkeyup="calculate()" onchange="calculate()"/><br>
+  </td>
+</tr>  
+<tr>
+<td colspan="2">Level: <input id="level" type="number" value="0" min="0" max="300" onkeyup="calculate()" onchange="calculate()"/>
+  </td> 
+<td colspan="2"><input type="checkbox" id="isRB" onclick="showHideRB()"> Is RB? 轉職
+<select id="rebirthDDL" style="display: none;" onchange="calculate()">
+    <option value="Killer" selected="selected">Killer 殺手</option>
+    <option value="Warrior">Warrior 武士</option>
+    <option value="Knight">Knight 騎士</option>
+    <option value="Wit">Wit 智者</option>
+    <option value="Priest">Priest 牧師</option>
+    <option value="Seer">Seer 先知</option>
+  </select>
+  </td> 
+</tr> 
+<tr>
+<td colspan="2" rowspan="2">HP: <span id="hp"></span><br>SP: <span id="sp"></span></td> 
+<td colspan="2">Hotsprings 溫泉: <input type="number" id="hotsprings" value="0" min="0" max="99" onkeyup="calculate()" onchange="calculate()"/></td> 
+</tr> 
+<tr> 
+<td colspan="2" style="color: red;">Stats: <span id="stats"></span></td>
+</tr> 
+<tr>
+<td colspan="2" style="font-weight: bold;" nowrap>
+ATK: <span id="atk">0</span><span style="color: red;"> + <span id="atks">0</span></span><br>
+DEF: <span id="def">0</span><span style="color: red;"> + <span id="defs">0</span></span><br>
+MAT: <span id="mat">0</span><span style="color: red;"> + <span id="mats">0</span></span><br>
+MDF: <span id="mdf">0</span><span style="color: red;"> + <span id="mdfs">0</span></span><br>
+SPD: <span id="spd">0</span><span style="color: red;"> + <span id="spds">0</span></span><br>
+</td> 
+<td>
+<input type="number" id="atkP" value="0" min="0" max="200" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="defP" value="0" min="0" max="200" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="matP" value="0" min="0" max="200" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="mdfP" value="0" min="0" max="200" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="spdP" value="0" min="0" max="200" onkeyup="calculate()" onchange="calculate()"/><br>
+</td>
+<td>
+STR: <br>
+CON: <br>
+INT: <br>
+WIS: <br>
+AGI: <br>
+</td> 
+<td nowrap>
+<input type="number" id="str" value="0" min="0" max="999" onkeyup="calculate()" onchange="calculate()"/> + <span class="pp">0</span><br>
+<input type="number" id="con" value="0" min="0" max="999" onkeyup="calculate()" onchange="calculate()"/> + <span class="pp">0</span><br>
+<input type="number" id="int" value="0" min="0" max="999" onkeyup="calculate()" onchange="calculate()"/> + <span class="pp">0</span><br>
+<input type="number" id="wis" value="0" min="0" max="999" onkeyup="calculate()" onchange="calculate()"/> + <span class="pp">0</span><br>
+<input type="number" id="agi" value="0" min="0" max="999" onkeyup="calculate()" onchange="calculate()"/> + <span class="pp">0</span><br>
+</td>
+  <td style="color: blue;">
+    <span id="totalStr">0</span><br>
+    <span id="totalCon">0</span><br>
+    <span id="totalInt">0</span><br>
+    <span id="totalWis">0</span><br>
+    <span id="totalAgi">0</span><br>      
+    </td>
+  <td rowspan="2"style="vertical-align: top;">Hand<br><button type="button" onclick="resetEquip('Hand')">Reset</button></td>
+  <td rowspan="2">
+    ATK: <br>
+    DEF: <br>
+    MAT: <br>
+    MDF: <br>
+    SPD: <br>
+    HP: <br>
+    SP: <br>
+  </td>
+  <td rowspan="2">
+    <input type="number" id="atkHand" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="defHand" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="matHand" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="mdfHand" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="spdHand" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="hpHand" value="0" min="0" max="2000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="spHand" value="0" min="0" max="2000" onkeyup="calculate()" onchange="calculate()"/><br>
+  </td>
+  <td rowspan="2"style="vertical-align: top;">Special<br><button type="button" onclick="resetEquip('Special')">Reset</button></td>
+  <td rowspan="2">
+    ATK: <br>
+    DEF: <br>
+    MAT: <br>
+    MDF: <br>
+    SPD: <br>
+    HP: <br>
+    SP: <br>
+  </td>
+  <td rowspan="2">
+    <input type="number" id="atkSpecial" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="defSpecial" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="matSpecial" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="mdfSpecial" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="spdSpecial" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="hpSpecial" value="0" min="0" max="2000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="spSpecial" value="0" min="0" max="2000" onkeyup="calculate()" onchange="calculate()"/><br>
+  </td>
+  <td rowspan="2"style="vertical-align: top;">Shoes<br><button type="button" onclick="resetEquip('Shoes')">Reset</button></td>
+  <td rowspan="2">ATK: <br>
+    DEF: <br>
+    MAT: <br>
+    MDF: <br>
+    SPD: <br>
+    HP: <br>
+    SP: <br>
+  </td> 
+  <td rowspan="2">
+    <input type="number" id="atkShoes" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="defShoes" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="matShoes" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="mdfShoes" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="spdShoes" value="0" min="0" max="1000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="hpShoes" value="0" min="0" max="2000" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="spShoes" value="0" min="0" max="2000" onkeyup="calculate()" onchange="calculate()"/><br>
+  </td>
+</tr>  
+<tr>
+<td colspan="4" style="font-size: 12px;">By FriedChicken#7656 @ Discord</td>
+<td colspan="2"><button type="button" onclick="resetStats()">Reset</button></td> 
+</tr>
+<tr class="petToggle">
+<td colspan="15" style="font-size: 15px;">Riding pet 寵物 +馬鞍/胸针</td>    
+</tr> 
+<tr class="petToggle">
+<td rowspan="4" colspan="2" style="font-weight: bold; vertical-align: top;" nowrap>
+ATK: <span id="Ratk">0</span><span style="color: red;"> + <span id="Ratks">0</span></span><br>
+DEF: <span id="Rdef">0</span><span style="color: red;"> + <span id="Rdefs">0</span></span><br>
+MAT: <span id="Rmat">0</span><span style="color: red;"> + <span id="Rmats">0</span></span><br>
+MDF: <span id="Rmdf">0</span><span style="color: red;"> + <span id="Rmdfs">0</span></span><br>
+SPD: <span id="Rspd">0</span><span style="color: red;"> + <span id="Rspds">0</span></span><br>
+HP: <span id="Rhp">0</span><span style="color: red;"> + <span id="Rmdfs">0</span></span><br>
+SP: <span id="Rsp">0</span><span style="color: red;"> + <span id="Rspds">0</span></span><br>
+</td>   
+<td rowspan="4" style="vertical-align: top;">
+<input type="number" id="RatkP" value="0" min="0" max="200" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="RdefP" value="0" min="0" max="200" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="RmatP" value="0" min="0" max="200" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="RmdfP" value="0" min="0" max="200" onkeyup="calculate()" onchange="calculate()"/><br>
+<input type="number" id="RspdP" value="0" min="0" max="200" onkeyup="calculate()" onchange="calculate()"/><br>
+  - <br>
+  - <br>
+</td> 
+  <td rowspan="4" style="vertical-align: top;">
+    ATK: <br>
+    DEF: <br>
+    MAT: <br>
+    MDF: <br>
+    SPD: <br>
+    HP: <br>
+    SP: <br>
+  </td>
+  <td rowspan="4" style="vertical-align: top;">
+    <input type="number" id="RatkA" value="0" min="0" max="999999" onkeyup="calculate()" onchange="calculate()"/><br>
+    <input type="number" id="RdefA" value="0" min="0" max="999999" onkeyup="calculate()" onchange="calculate()"/><br>
+    <input type="number" id="RmatA" value="0" min="0" max="999999" onkeyup="calculate()" onchange="calculate()"/><br>
+    <input type="number" id="RmdfA" value="0" min="0" max="999999" onkeyup="calculate()" onchange="calculate()"/><br>
+    <input type="number" id="RspdA" value="0" min="0" max="999999" onkeyup="calculate()" onchange="calculate()"/><br>
+      
+    <input type="number" id="RhpA" value="0" min="0" max="999999" onkeyup="calculate()" onchange="calculate()"/><br>
+    <input type="number" id="RspA" value="0" min="0" max="999999" onkeyup="calculate()" onchange="calculate()"/><br>
+  </td>
+  <td colspan="3" style="vertical-align: top;">
+    Saddle/Brooch<br>馬鞍/胸针: </td>
+  <td colspan="3">
+<select id="saddleDDL" onchange="calculate()">
+    <option value="None" selected="selected">None</option>
+    <option value="Bash">Bash Saddle 猛擊</option>
+    <option value="Defense">Defense Saddle 防禦</option>
+    <option value="Magic">Magic Saddle 睿智</option>
+    <option value="Spirit">Spirit Saddle 魔法防禦</option>
+    <option value="Swift">Swift Saddle 敏捷</option>
+    <option value="Tenacity">Tenacity Saddle 體力</option> 
+    <option value="Brooch">Duo Heart Brooch 同心胸针</option>
+    <option value="HeartBrooch">Heart Brooch 爱心胸针</option>
+  </select><br>
+    <span id="saddleDesc" style="font-size: 15px;" wrap>No Riding Saddle/Brooch</span>
+  </td>
+<td colspan="6" rowspan="4" style="font-weight: bold; vertical-align: top;" nowrap>
+  HP: <span id="hpn">0</span><br>
+  SP: <span id="spn">0</span><br>
+  <br>
+  ATK: <span id="atkn">0</span><span style="color: red;"> + <span id="atksn">0</span></span><br>
+  DEF: <span id="defn">0</span><span style="color: red;"> + <span id="defsn">0</span></span><br>
+  MAT: <span id="matn">0</span><span style="color: red;"> + <span id="matsn">0</span></span><br>
+  MDF: <span id="mdfn">0</span><span style="color: red;"> + <span id="mdfsn">0</span></span><br>
+  SPD: <span id="spdn">0</span><span style="color: red;"> + <span id="spdsn">0</span></span><br>
+  <span id="char" style="font-weight: normal;">(New Pet Stats)</span>
+  </td>  
+</tr>
+<tr class="petToggle">
+  <td colspan="3">Saddle/Brooch Pills<br>馬鞍/爱心丸:</td>
+  <td colspan="3"><input type="number" id="saddlePill" value="0" min="0" max="200" onkeyup="calculate()" onchange="calculate()"/> (+0.5%)
+  </td>
+</tr>
+<tr class="petToggle">
+  <td colspan="6"><span style="font-weight: bold; color: blue;">Bonus: + <span id="bonusSaddle">0</span></span><br>
+    <span style="font-weight: bold; color: red; display: none;">Total: <span id="totalBonus">0</span></span> <br>
+  </td> 
+</tr>
+  <tr class="petToggle">
+    <td colspan="6"><button type="button" onclick="resetRiding()">Reset</button></td>
+</tr>
+</table> 
+  
+<br>
+<br>
+  
+<span style="font-family: lato, sans-serif; font-size: 20px;"><strong>Lazy Man Calculator (Equip) 懶人計算機</strong>
+<table>
+ <tr>
+   <td></td>
+   <td>Based</td>
+   <td>Forge</td>
+   <td>Insert</td>
+   <td>Scroll</td> 
+   <td></td>
+ </tr>
+  <tr>
+   <td>Total sum: </td>
+   <td><input type="number" id="addBased" value="0" min="0" max="1000" onkeyup="addUp()" onchange="addUp()"/></td>
+   <td><input type="number" id="addForge" value="0" min="0" max="1000" onkeyup="addUp()" onchange="addUp()"/></td>
+   <td><input type="number" id="addInsert" value="0" min="0" max="1000" onkeyup="addUp()" onchange="addUp()"/></td>
+    <td><input type="number" id="addScroll" value="0" min="0" max="1000" onkeyup="addUp()" onchange="addUp()"/></td> 
+    <td>= <span id="totalAddUp">0</span> &nbsp;&nbsp; <button type="button" onclick="addUpReset()">Reset</button></td>
+ </tr>
+</table>
+</span>
+<br><br>
+<p>Contact me at FriedChicken#7656 Discord! </p>
+
+</body>
+</html>
